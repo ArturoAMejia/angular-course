@@ -4,12 +4,31 @@ export class Person {
 
   // Short form of initializing class properties
 
-  constructor(public name: string, private address: string) {
-    this.name = name;
-    this.address = address;
+  constructor(public name: string, private address: string = "No address") {
+    // this.name = name;
+    // this.address = address;
   }
 }
 
-const ironman = new Person("Tony Stark", "Malibu");
+// export class Hero extends Person {
+//   constructor(
+//     public realName: string,
+//     public age: number,
+//     public alterEgo: string
+//   ) {
+//     super(realName, 'New York');
+//   }
+// }
 
-console.log({ ironman });
+export class Hero {
+  constructor(
+    public realName: string,
+    public age: number,
+    public alterEgo: string,
+    public person: Person
+  ) {}
+}
+const tony = new Person("Tony Stark", "New York");
+const ironman = new Hero("Tony Stark", 45, "Ironman", tony);
+
+console.log(ironman);
